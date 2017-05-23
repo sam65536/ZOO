@@ -1,0 +1,264 @@
+body {
+    padding-top: 15px;
+    padding-bottom: 20px;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists
+   will truncate terms that are too long to fit in the left column
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    /*max-width: 280px;*/
+}
+
+h2 {
+    margin-top: 0;
+    margin-bottom: 0;
+    font-family: 'Segoe UI', Calibri, Arial;
+    color: #086aac;
+}
+
+
+#header {
+    margin-bottom: 10px;
+}
+
+
+#headerwrap h1 {
+    color: #ffffff;
+    font-size: 45px;
+    font-weight: 900;
+    line-height: 50px;
+    text-align: left;
+    padding-top: 30px;
+    letter-spacing: 3px;
+}
+
+#headerwrap p {
+    color: #ffffff;
+    font-size: 18px;
+    line-height: 24px;
+    text-align: left;
+    letter-spacing: 1px;
+}
+
+.register h1 {
+    text-align: center;
+    font-family: 'Open Sans', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #555;
+    font-size: 38px;
+    font-weight: 300;
+    margin-top: 27px;
+    margin-bottom: 50px;
+}
+
+/* centered columns styles */
+.row-centered {
+    text-align: center;
+}
+
+.col-centered {
+    display: inline-block;
+    float: none;
+    /* reset the text-align */
+    text-align: left;
+    /* inline-block space fix */
+    margin-right: -4px;
+}
+
+.col-fixed {
+    /* custom width */
+    width: 320px;
+}
+
+.col-min {
+    /* custom min width */
+    min-width: 320px;
+}
+
+.col-max {
+    /* custom max width */
+    max-width: 320px;
+}
+
+
+/*=========  Glyphicon ==========*/
+
+
+/*==========  Kendo ============*/
+
+.k-grid > .k-loading-mask > .k-loading-color {
+    opacity: .1;
+}
+
+
+/*==========  BootStrap ============*/
+/*body {
+  background-color: rgb(241, 241, 241);
+  padding-top:0px;
+}*/
+
+.navbar {
+    background-color: white;
+    margin-left: -15px;
+    margin-right: -15px;
+}
+
+.navbar-inverse .navbar-toggle .icon-bar {
+    background-color: #12CE63;
+}
+
+.navbar-toggle .icon-bar {
+    background-color: red;
+}
+
+/* Toggle buttons*/
+
+.btn-compare {
+    color: #130269;
+    background-color: #e6e6e5;
+    border-color: #AAAAAA;
+}
+
+.btn.active[data-active-class="btnCompare_On"] {
+    /* Attributes when button is active */
+    color: #000000;
+    background-color: #adedaf;
+    border-color: #AAAAAA;
+}
+
+.btn.active[data-active-class="btnWeather_On"] {
+    /* Attributes when button is active */
+    color: #000000;
+    background-color: #fef578;
+    border-color: #AAAAAA;
+}
+
+/* Button normal color*/
+.btn-weather {
+    color: #130269;
+    background-color: #e6e6e5;
+    border-color: #AAAAAA;
+}
+
+/* Usage active color*/
+.btn.active[data-active-class="btnUsage_On"] {
+    /* Attributes when button is active */
+    color: #000000;
+    background-color: #c5e1ef;
+    border-color: #AAAAAA;
+}
+
+/* Usage normal color*/
+.btn-usage {
+    color: #130269;
+    background-color: #e6e6e5;
+    border-color: #AAAAAA;
+}
+
+/* Demand active color*/
+.btn.active[data-active-class="btnDemand_On"] {
+    /* Attributes when button is active */
+    color: #000000;
+//background-color: #ffb292;
+    background-color: #ffac78;
+    border-color: #AAAAAA;
+}
+
+/* Demand normal color*/
+.btn-demand {
+    color: #130269;
+    background-color: #e6e6e5;
+    border-color: #AAAAAA;
+}
+
+/*=============================================================================*/
+
+.main {
+    margin-top: 40px;
+}
+
+.register-well {
+    background-color: #fff;
+    margin-top: 10px;
+    margin: 0 auto;
+    max-width: 530px;
+    padding: 40px 50px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+label {
+    margin-bottom: 15px;
+}
+
+input,
+input::-webkit-input-placeholder {
+    padding-top: 3px;
+}
+
+.main-login {
+    background-color: #fff;
+    /* shadows and rounded borders */
+    -moz-border-radius: 2px;
+    -webkit-border-radius: 2px;
+    border-radius: 2px;
+    -moz-box-shadow: 0 2px 2px rgba(0, 0, 0, 0.3);
+    -webkit-box-shadow: 0 2px 2px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.3);
+}
+
+.login-button {
+    margin-top: 35px;
+}
+
+.login-register {
+    text-align: center;
+}
+
+/* Tooltip */
+.test + .tooltip > .tooltip-inner {
+    background-color: #73AD21;
+    color: #FFFFFF;
+    border: 1px solid green;
+    padding: 8px;
+    width: 400px;
+    font-size: 16px;
+}
+/* Tooltip on top */
+.test + .tooltip.top > .tooltip-arrow {
+    border-top: 5px solid green;
+    width: 50px;
+}
+/* Tooltip on bottom */
+.test + .tooltip.bottom > .tooltip-arrow {
+    border-bottom: 5px solid blue;
+}
+/* Tooltip on left */
+.test + .tooltip.left > .tooltip-arrow {
+    border-left: 5px solid red;
+}
+/* Tooltip on right */
+.test + .tooltip.right > .tooltip-arrow {
+    border-right: 5px solid black;
+}
+
+.block-help{
+    margin-left:20px;
+    font-size: 16px;
+    margin-top: 10px;
+}

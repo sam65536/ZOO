@@ -1,0 +1,72 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Homepage</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link href="http://cdn.jsdelivr.net/webjars/bootstrap/3.3.1/css/bootstrap.min.css" rel="stylesheet" media="screen" />
+    <link rel="stylesheet" type="text/css" th:href="@{|/css/bootstrap_col_15.css|}" />
+    <link rel="stylesheet" type="text/css" th:href="@{|/css/zoo.css|}" />
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js"></script>
+</head>
+<body>
+<div th:include="fragments/header"></div>
+
+<div class="container">
+    <div class="col15-md-3" th:each="animal : ${animals}">
+        <br>
+        <a th:href="@{|/animals/${animal.id}|}">
+            <img th:src="@{|/animals/images/${animal.id}|}"
+                 class="img-responsive" style="width: 200px; height: 150px; border-radius: 5px 5px 0 0" alt="Animal photo" />
+        </a>
+        <a th:href="@{|/animals/${animal.id}|}">
+            <p class="animal-name"><span th:text="${animal.name}"></span></p>
+        </a>
+    </div>
+</div>
+
+<div class="col-md-12 text-center">
+    <div class="pagination pagination-centered">
+        <ul class="pagination">
+            <li th:class="${currentIndex == 1}? 'disabled' : ''"><span
+                th:if='${currentIndex == 1}'>First</span> <a
+                th:if='${currentIndex != 1}' th:href="@{/animals/page/1}">First</a>
+            </li>
+
+            <li th:class="${currentIndex == 1}? 'disabled' : ''"><span
+                th:if='${currentIndex == 1}'>«</span> <a
+                th:if='${currentIndex != 1}'
+                th:href="@{|${baseUrl}${currentIndex - 1}|}"
+                title='Go to previous page'>«</a>
+            </li>
+
+            <li th:each="item : ${#numbers.sequence(beginIndex, endIndex)}"
+                th:class="${item == currentIndex ? 'active' : '' }"><span
+                th:if='${item == currentIndex}' th:text='${item}'>1</span> <a
+                th:if='${item != currentIndex}'
+                th:href="@{|${baseUrl}${item}|}"> <span
+                th:text='${item}'>1</span></a>
+            </li>
+
+            <li th:class="${currentIndex != totalPageCount}? '' : 'disabled'">
+                <span th:if='${currentIndex == totalPageCount}'>»</span> <a
+                th:if='${currentIndex != totalPageCount}'
+                th:href="@{|${baseUrl}${currentIndex + 1}|}"
+                title='Go to next page'>»</a>
+            </li>
+
+            <li th:class="${currentIndex == totalPageCount}? 'disabled' : ''">
+                <span th:if='${currentIndex == totalPageCount}'>Last</span> <a
+                th:if='${currentIndex != totalPageCount}'
+                th:href="@{|${baseUrl}${totalPageCount}|}">Last</a>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<div class="col-md-12 text-center" sec:authorize="hasAnyRole('USER','ADMIN')">
+<a th:href="@{/animals/new}" class="btn btn-success"><i class="glyphicon glyphicon-plus"></i> Add Animal</a>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Edit Animal</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link href="http://cdn.jsdelivr.net/webjars/bootstrap/3.3.1/css/bootstrap.min.css" rel="stylesheet" media="screen"/>
+    <script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
+    <link rel="stylesheet" type="text/css" th:href="@{|/css/zoo.css|}" />
+</head>
+<body>
+<div th:include="fragments/header"></div>
+<div class="container">
+    <div th:include="animals/form :: animalform(@{|/animals/${animal.id}|})"></div>
+</div>
+<script>
+    $('#img').change(function () {
+        var input = $(this)[0];
+        if (input.files && input.files[0]) {
+            if (input.files[0].type.match('image.*')) {
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    $('#img-preview').attr('src', e.target.result);
+                }
+                reader.readAsDataURL(input.files[0]);
+            } else {
+                console.log('incorrect file type!');
+            }
+        } else {
+            console.log('some other error...');
+        }
+    });
+
+    $('#animal-form').bind('reset', function () {
+        $('#img-preview').attr('src', '//placehold.it/320x240?text=NO PHOTO');
+    });
+
+    $(document).ready(function() {
+        $('#img').on('change', uploadFile);
+    });
+
+    function uploadFile() {
+        $.ajax({
+            url: '/animals/uploadFile',
+            type: "POST",
+            data: new FormData($("#animal-form")[0]),
+            enctype: 'multipart/form-data',
+            processData: false,
+            contentType: false,
+            cache: false
+        });
+    }
+</script>
+</body>
+</html>

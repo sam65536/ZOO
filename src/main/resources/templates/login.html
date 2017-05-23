@@ -1,0 +1,69 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Homepage</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<link rel="stylesheet" type="text/css" th:href="@{|/css/bootstrap.css|}"/>
+<link rel="stylesheet" type="text/css" th:href="@{|/css/zoo.css|}"/>
+<script th:src="@{|/js/jquery.js|}"></script>
+<script th:src="@{|/js/bootstrap.js|}"></script>
+</head>
+<body>
+<div th:include="fragments/header"></div>
+	<div class="container">
+		<div class="row top-buffer">
+			<div class="col-md-12">
+				<div class="well">
+					<div class="row">
+						<div class="col-md-12">
+							<div th:unless="${param.error == null}">
+								<div class="alert alert-danger alert-dismissible" role="alert" id="errorDiv">
+									<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
+									<span id="spError">The username or password you have entered is invalid, try again.</span>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div th:if="${#httpServletRequest.remoteUser} == null">
+						<form class="form-horizontal" th:action="@{/}" method="post">
+							<div class="form-group">
+								<label for="login" class="col-lg-2 control-label">Login</label>
+								<div class="col-lg-10">
+									<div class="input-group">
+                						<span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+										<input class="form-control" id="login" placeholder="Username" type="text" name="username"/>
+									</div>
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="password" class="col-lg-2 control-label">Password</label>
+								<div class="col-lg-10">
+									<div class="input-group">
+                						<span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+										<input class="form-control" id="password" placeholder="Password" type="password" name="password"/>
+										<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+									</div>
+								</div>
+							</div>
+							<div class="form-group">
+								<div class="col-lg-offset-2 col-lg-10">
+									<div class="checkbox">
+										<label>
+											<input type="checkbox"> Remember me
+										</label>
+									</div>
+								</div>
+							</div>
+							<div class="form-group">
+								<div class="col-lg-offset-2 col-lg-10">
+									<button type="submit" class="btn btn-primary">Sign in</button>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

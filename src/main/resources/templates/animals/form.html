@@ -1,0 +1,126 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+<title>Handling form submission</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link
+	href="http://cdn.jsdelivr.net/webjars/bootstrap/3.3.1/css/bootstrap.min.css" rel="stylesheet" media="screen" />
+	<script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
+	<link rel="stylesheet" type="text/css" th:href="@{|/css/zoo.css|}" />
+</head>
+<body>
+<div class="container">
+	<div class="page-header">
+		<h1 class="text-center">Animal Form:</h1>
+	</div>
+	<div th:fragment="animalform(url)">
+		<div class="col-md-3">
+			<div class="text-center">
+				<img id="img-preview"
+					 th:src="${animal.image == null} ? '//placehold.it/320x240?text=NO PHOTO' : @{|/animals/images/${animal.id}|}"
+					 class="img-rounded" alt="animal photo">
+				<span id="upload-file-message"></span>
+			</div>
+		</div>
+		<div class="col-md-8">
+			<form id="animal-form" class="form-horizontal" action="#" th:action="${url}" th:object="${animal}" method="post">
+				<input type="hidden" th:field="*{id}" />
+				<div class="form-group">
+					<label class="col-lg-3 control-label">Type:</label>
+					<div class="col-lg-8">
+						<div class="ui-select">
+							<select class="form-control" th:field="*{type}">
+								<option value="">--Select Type--</option>
+								<option th:each="type : ${T(spd.spring.camp.team3.domain.enums.AnimalType).values()}"
+										th:value="${type}"
+										th:text="${type}">
+								</option>
+							</select>
+						</div>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-lg-3 control-label">Gender:</label>
+					<div class="col-lg-8">
+						<div class="ui-select">
+							<select class="form-control" th:field="*{gender}">
+								<option value="">--Select Gender--</option>
+								<option th:each="gender : ${T(spd.spring.camp.team3.domain.enums.AnimalGender).values()}"
+										th:value="${gender}"
+										th:text="${gender}">
+								</option>
+							</select>
+						</div>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-lg-3 control-label">Name:</label>
+					<div class="col-lg-8">
+						<input class="form-control" type="text" placeholder="Name" th:field="*{name}">
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-lg-3 control-label">Age:</label>
+					<div class="col-lg-8">
+						<input class="form-control" type="text" placeholder="Age" th:field="*{age}">
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-lg-3 control-label">Upload Photo:</label>
+					<div class="col-lg-8">
+						<input id="img" class="form-control" type="file" accept="image/*" th:field="*{imagePath}">
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-md-3 control-label"></label>
+					<div class="col-md-8">
+						<input type="submit" class="btn btn-primary" value="Save" width="70px">
+						<span></span>
+						<input type="reset" class="btn btn-danger" value="Reset" width="70px">
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+<hr>
+<script>
+    $('#img').change(function () {
+        var input = $(this)[0];
+        if (input.files && input.files[0]) {
+            if (input.files[0].type.match('image.*')) {
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    $('#img-preview').attr('src', e.target.result);
+                }
+                reader.readAsDataURL(input.files[0]);
+            } else {
+                console.log('incorrect file type!');
+            }
+        } else {
+            console.log('some other error...');
+        }
+    });
+
+    $('#animal-form').bind('reset', function () {
+        $('#img-preview').attr('src', '//placehold.it/320x240?text=NO PHOTO');
+    });
+
+    $(document).ready(function() {
+        $('#animal-form').bind('submit', uploadFile);
+    });
+
+    function uploadFile() {
+        $.ajax({
+            url: '/animals/uploadFile',
+            type: "POST",
+            data: new FormData($("#animal-form")[0]),
+            enctype: 'multipart/form-data',
+            processData: false,
+            contentType: false,
+            cache: false
+        });
+    }
+</script>
+</body>
+</html>

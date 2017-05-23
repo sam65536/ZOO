@@ -1,0 +1,38 @@
+buildscript {
+	ext {
+		springBootVersion = '1.5.3.RELEASE'
+	}
+	repositories {
+		mavenCentral()
+	}
+	dependencies {
+		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+	}
+}
+
+if (!hasProperty('mainClass')) {
+	ext.mainClass = 'spd.spring.camp.team3.ZooApplication'
+}
+
+apply plugin: 'java'
+apply plugin: 'org.springframework.boot'
+
+version = '0.0.1-SNAPSHOT'
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	compile('org.springframework.boot:spring-boot-starter-data-jpa')
+	compile('org.springframework.boot:spring-boot-starter-thymeleaf')
+	compile('org.springframework.boot:spring-boot-starter-data-rest')
+	compile('org.springframework.boot:spring-boot-starter-security')
+	compile('org.springframework.boot:spring-boot-starter-web')
+	compile group: 'org.thymeleaf.extras', name: 'thymeleaf-extras-springsecurity4', version:'2.1.2.RELEASE'
+	compile group: 'net.sourceforge.nekohtml', name: 'nekohtml', version:'1.9.21'
+	compile group: 'com.h2database', name: 'h2', version: '1.4.195'
+	compile group: 'org.postgresql', name: 'postgresql', version: '42.1.1'
+	compileOnly('org.projectlombok:lombok')
+	testCompile('org.springframework.boot:spring-boot-starter-test')
+}

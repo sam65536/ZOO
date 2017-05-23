@@ -1,0 +1,21 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>User Profile</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<link href="http://cdn.jsdelivr.net/webjars/bootstrap/3.3.1/css/bootstrap.min.css" rel="stylesheet" media="screen"/>
+</head>
+<body>
+	<div th:include="fragments/header"></div>
+	<br>
+	<div class="container">
+		<div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3" style="border-radius: 5px; border-bottom-width: thick; background-color: ghostwhite; padding: 5%; text-align: center;">
+			<h3>Account details:</h3>
+			<hr>
+			<div class="panel"><b>username: </b> <span th:text="${user.username}"></span> </div>
+			<div class="panel"><b>e-mail: </b>   <span th:text="${user.email}"></span> </div>
+			<span>Assigned as </span><span th:text="${user.role.ordinal() == 0} ? 'User' : 'Admin'"></span>
+		</div>
+	</div>
+</body>
+</html>

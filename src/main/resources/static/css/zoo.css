@@ -1,0 +1,29 @@
+.top-buffer {
+   padding-top:10px;
+}
+table {
+   width:100%
+}
+caption {
+   color:#fff;
+   background-color:#000;
+   text-align:center;
+   font-weight:bold;
+}
+
+#animal-info {
+   font-family: "Arial";
+   font-size: 120%;
+}
+
+.animal-name {
+   text-align: center;
+   font-weight: 800;
+   border-radius: 0 0 5px 5px;
+   background-color: gainsboro;
+}
+
+#img-preview {
+   width: 320px;
+   height: 240px;
+}

@@ -1,0 +1,18 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head> 
+    <title>Create new User</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" type="text/css" th:href="@{|/css/bootstrap.min.css|}" />
+    <script th:src="@{|/js/jquery.js|}"></script>
+    <script th:src="@{|/js/bootstrap.min.js|}"></script>
+    <script th:src="@{|/js/userform.js|}"></script>
+    <script th:src="@{|/js/validator.js|}"></script>
+
+</head>
+<body>
+	<div th:include="fragments/header"></div>
+	<div th:include="users/form :: userform(@{/users/})"></div>
+</body>
+</html>
+
