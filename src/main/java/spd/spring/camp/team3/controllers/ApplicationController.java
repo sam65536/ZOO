@@ -9,12 +9,12 @@ import spd.spring.camp.team3.domain.enums.UserRole;
 @Controller
 public class ApplicationController {
 
-    @RequestMapping(value = "/")
+    @RequestMapping("/")
     public String root() {
         return "redirect:/animals";
     }
 
-    @RequestMapping(value = "/signedin")
+    @RequestMapping("/signedin")
     public String signedIn(Authentication authentication) {
         CustomUserDetails principal = (authentication != null) ? (CustomUserDetails) authentication.getPrincipal() : null;
         if (principal != null) {

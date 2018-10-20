@@ -5,7 +5,7 @@ INSERT INTO animals (age, gender, image_path, name, type) VALUES
 (4, 1, 'coyote.jpg', 'Coyote', 3),
 (12, 0, 'crow.jpg', 'Crow', 4),
 (5, 1, 'deer.jpg', 'Deer', 5),
-(3, 0, 'dingo.jpg', 'Dingo', 6),
+(3, 0, 'dingo.jpg', 'Dingo', 6),type
 (2, 0, 'duck.jpg', 'Duck', 7),
 (3, 1, 'eagle.jpg', 'Eagle', 8),
 (7, 0, 'elephant.jpg', 'Elephant', 9),
